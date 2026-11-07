@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Tezkorlik O'yini</title>
+    <style>
+        body { 
+            text-align: center; 
+            background: #1a1a1a; 
+            color: #fff; 
+            font-family: Arial, sans-serif; 
+            margin-top: 50px; 
+        }
+        #target { 
+            width: 60px; 
+            height: 60px; 
+            background: #ff4757; 
+            border-radius: 50%; 
+            position: absolute; 
+            cursor: pointer; 
+            display: none; 
+            box-shadow: 0 0 10px #ff4757;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #2ed573;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reaksiya va Tezlik O'yini</h1>
+    <p>Ball: <span id="score">0</span></p>
+    <button onclick="startGame()">O'yinni boshlash</button>
+    <div id="target" onclick="hitTarget()"></div>
+
+    <script>
+        let score = 0;
+
+        function startGame() {
+            score = 0;
+            document.getElementById('score').innerText = score;
+            nextTarget();
+        }
+
+        function nextTarget() {
+            const target = document.getElementById('target');
+            // Ekranning tasodifiy qismidan joy tanlash
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 200) + 120;
+            
+            target.style.left = x + 'px';
+            target.style.top = y + 'px';
+            target.style.display = 'block';
+        }
+
+        function hitTarget() {
+            score++;
+            document.getElementById('score').innerText = score;
+            nextTarget();
+        }
+    </script>
+</body>
+</html>
